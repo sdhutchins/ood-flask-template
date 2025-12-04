@@ -1,3 +1,6 @@
-## OnDemand/Passenger: Flask example app
+# Open OnDemand Flask Template
 
-This is a [Flask](http://flask.pocoo.org/) hello world example app for [the Passenger application server](https://www.phusionpassenger.com/) that has been modified to work with [OnDemand](https://openondemand.org/).
+This is a Flask template for building Open OnDemand applications. It provides a basic structure and common
+functionalities to help you get started quickly.
+
+This was inspired by [OSC's OOD Flask example app](https://github.com/OSC/ood-example-flask-app).
