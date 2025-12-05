@@ -10,6 +10,9 @@ pip install -r requirements.txt
 # Create bin directory if it doesn't exist
 mkdir -p bin
 
+# Remove existing bin/python if it exists (symlink or file)
+rm -f bin/python
+
 # Create Python wrapper script (activates venv before running Python)
 cat > bin/python << 'EOF'
 #!/usr/bin/env bash
