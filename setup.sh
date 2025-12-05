@@ -20,7 +20,7 @@ cat > bin/python << 'EOF'
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 source $SCRIPT_DIR/../venv/bin/activate
 
-exec $SCRIPT_DIR/../venv/bin/python "$@"
+exec python "$@"
 EOF
 
 # Make it executable
