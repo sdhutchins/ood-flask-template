@@ -2,7 +2,10 @@
 set -eo pipefail
 IFS=$'\n\t'
 
-module load Python
+# Load Python module (use Python 3.11 or earlier for Passenger compatibility)
+# The 'imp' module was removed in Python 3.12, which breaks Passenger's wsgi-loader
+# Check available versions: module avail Python
+module load Python/3.11.5-GCCcore-13.2.0
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
@@ -23,7 +26,7 @@ SCRIPT_DIR=\$( cd -- "\$( dirname -- "\${BASH_SOURCE[0]}" )" &> /dev/null && pwd
 APP_DIR=\$( cd -- "\$SCRIPT_DIR/.." &> /dev/null && pwd )
 
 # Load Python module to set up library paths
-module load Python 2>/dev/null || true
+module load Python/3.11.5-GCCcore-13.2.0 2>/dev/null || true
 
 # Set LD_LIBRARY_PATH if Python library path was found during setup
 if [ -n "$PYTHON_LIB_PATH" ] && [ -d "$PYTHON_LIB_PATH" ]; then
