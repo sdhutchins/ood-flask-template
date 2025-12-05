@@ -20,7 +20,8 @@ cat > bin/python << 'EOF'
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 source $SCRIPT_DIR/../venv/bin/activate
 
-exec /usr/bin/env python3 "$@"
+# Use python from the activated venv (not system python3)
+exec python "$@"
 EOF
 
 # Make it executable
