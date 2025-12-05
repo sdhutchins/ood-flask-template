@@ -18,7 +18,13 @@ cat > bin/python << 'EOF'
 #!/usr/bin/env bash
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-source $SCRIPT_DIR/../venv/bin/activate
+APP_DIR=$( cd -- "$SCRIPT_DIR/.." &> /dev/null && pwd )
+
+# Load Python module to set up library paths
+#module load Python 2>/dev/null || true
+
+# Activate venv (venv is in app root directory)
+source "$APP_DIR/venv/bin/activate"
 
 exec python "$@"
 EOF
