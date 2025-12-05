@@ -13,15 +13,14 @@ mkdir -p bin
 # Remove existing bin/python if it exists (symlink or file)
 rm -f bin/python
 
-# Create Python wrapper script (activates venv before running Python)
+# Create Python wrapper script (matches OSC example pattern)
 cat > bin/python << 'EOF'
 #!/usr/bin/env bash
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 source $SCRIPT_DIR/../venv/bin/activate
 
-# Use python from the activated venv (not system python3)
-exec python "$@"
+exec $SCRIPT_DIR/../venv/bin/python "$@"
 EOF
 
 # Make it executable
