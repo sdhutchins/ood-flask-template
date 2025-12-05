@@ -18,7 +18,10 @@ rm -f bin/python
 
 PYTHON_LIB_PATH=$(python -c "import sysconfig; print(sysconfig.get_config_var('LIBDIR'))" 2>/dev/null || echo "")
 
-# Create Python wrapper script (matches OSC example pattern)
+# Create Python wrapper script for Passenger
+# Passenger looks for bin/python in the app directory and uses it instead of system Python.
+# This wrapper activates the venv so Passenger uses the venv's Python with Flask installed.
+# See: https://osc.github.io/ood-documentation/latest/tutorials/tutorials-passenger-apps/phusion-passenger.html
 cat > bin/python << EOF
 #!/usr/bin/env bash
 
