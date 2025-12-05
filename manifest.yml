@@ -1,5 +1,5 @@
 ---
-name: Hello Python
-category: Jobs
+name: Flask Template
+category: Interactive Apps
 description: |-
-  Example Python application using Flask.
+  Template Python application using Flask.
